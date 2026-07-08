@@ -20,7 +20,7 @@
         <p id="answer"></p>
 
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
     document.getElementById("askForm").onsubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +35,8 @@
         });
 
         let data = await res.json();
-        document.getElementById("answer").innerText = data.response;
+        document.getElementById("answer").innerHTML =
+            marked.parse(data.response);
 
         loading.style.display = "none";   // hide loader
     };

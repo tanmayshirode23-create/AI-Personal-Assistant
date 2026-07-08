@@ -96,3 +96,44 @@ hr {
     border: none;
     border-top: 1px solid #eee;
 }
+#answer {
+    line-height: 1.7;
+    white-space: normal;
+}
+
+#answer h1,
+#answer h2,
+#answer h3,
+#answer h4 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+#answer p {
+    margin: 10px 0;
+}
+
+#answer ul,
+#answer ol {
+    margin: 15px 0 15px 30px;
+    padding-left: 20px;
+}
+
+#answer li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+#answer pre {
+    background: #272822;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+#answer code {
+    background: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+}

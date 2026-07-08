@@ -1,5 +1,5 @@
 from flask import Flask , render_template , request , jsonify
-from google import genai 
+from google import genai
 from google.genai import types
 from dotenv import load_dotenv
 import os
@@ -23,14 +23,29 @@ def ask():
             model = "gemini-2.5-flash",
             contents = question,
             config=types.GenerateContentConfig(
-                system_instruction = "You are a helpful Personal Assistant.",
+                system_instruction="""
+                    You are a helpful AI Personal Assistant.
+                    - Give concise answers for simple questions.
+                    - Give detailed explanations only when the user explicitly asks for them.
+                    - Use bullet points and markdown.
+                    """,
                 temperature=0.7,
-                max_output_tokens = 512,
+                max_output_tokens =4096,
             ),
         )
-    
-    answer = response.text
-    return jsonify({"response":answer})
+    print(response)
+    answer = ""
+
+    for part in response.candidates[0].content.parts:
+        if hasattr(part, "text"):
+            answer += part.text
+
+    answer = answer.strip()
+
+    return jsonify({"response": answer})
+
+    print(response.candidates[0].finish_reason)
+   
     
 
     
